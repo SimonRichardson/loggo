@@ -112,6 +112,11 @@ func (logger Logger) Tags() []string {
 	return logger.getModule().tags
 }
 
+// Labels returns the configured labels of the logger's module.
+func (logger Logger) Labels() Labels {
+	return logger.getModule().labels
+}
+
 // EffectiveLogLevel returns the effective min log level of
 // the receiver - that is, messages with a lesser severity
 // level will be discarded.
@@ -140,15 +145,6 @@ func (logger Logger) Logf(level Level, message string, args ...interface{}) {
 	logger.LogCallf(2, level, message, args...)
 }
 
-// LogWithlabelsf logs a printf-formatted message at the given level with extra
-// labels. The given labels will be added to the log entry.
-// A message will be discarded if level is less than the the effective log level
-// of the logger. Note that the writers may also filter out messages that are
-// less than their registered minimum severity level.
-func (logger Logger) LogWithLabelsf(level Level, message string, extraLabels map[string]string, args ...interface{}) {
-	logger.logCallf(2, level, message, extraLabels, args...)
-}
-
 // LogCallf logs a printf-formatted message at the given level.
 // The location of the call is indicated by the calldepth argument.
 // A calldepth of 1 means the function that called this function.
@@ -157,12 +153,12 @@ func (logger Logger) LogWithLabelsf(level Level, message string, extraLabels map
 // Note that the writers may also filter out messages that
 // are less than their registered minimum severity level.
 func (logger Logger) LogCallf(calldepth int, level Level, message string, args ...interface{}) {
-	logger.logCallf(calldepth+1, level, message, nil, args...)
+	logger.logCallf(calldepth+1, level, message, args...)
 }
 
 // logCallf is a private method for logging a printf-formatted message at the
 // given level. Used by LogWithLabelsf and LogCallf.
-func (logger Logger) logCallf(calldepth int, level Level, message string, extraLabels map[string]string, args ...interface{}) {
+func (logger Logger) logCallf(calldepth int, level Level, message string, args ...interface{}) {
 	module := logger.getModule()
 	if !module.willWrite(level) {
 		return
@@ -203,10 +199,6 @@ func (logger Logger) logCallf(calldepth int, level Level, message string, extraL
 		entry.Labels[LoggerTags] = strings.Join(module.tags, ",")
 	}
 	for k, v := range logger.impl.labels {
-		entry.Labels[k] = v
-	}
-	// Add extra labels if there's any given.
-	for k, v := range extraLabels {
 		entry.Labels[k] = v
 	}
 	module.write(entry)
