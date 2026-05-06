@@ -4,7 +4,7 @@ go 1.25
 
 require (
 	github.com/juju/ansiterm v0.0.0-20180109212912-720a0952cc2a
-	github.com/juju/tc v1.0.0
+	github.com/juju/tc v0.0.0-20251023013639-77c6a1d20e5a
 )
 
 require (

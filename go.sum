@@ -1,8 +1,8 @@
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/juju/ansiterm v0.0.0-20180109212912-720a0952cc2a h1:FaWFmfWdAUKbSCtOU2QjDaorUexogfaMgbipgYATUMU=
 github.com/juju/ansiterm v0.0.0-20180109212912-720a0952cc2a/go.mod h1:UJSiEoRfvx3hP73CvoARgeLjaIOjybY9vj8PUPPFGeU=
-github.com/juju/tc v1.0.0 h1:Zta3iDE1ENGY27wLgIGGF5sP7aUxmGqYlA1S1QJFllg=
-github.com/juju/tc v1.0.0/go.mod h1:HQmYwCjODXvOaw7nVqSoX1S/g+OJitDnA5ZeJJkOhTo=
+github.com/juju/tc v0.0.0-20251023013639-77c6a1d20e5a h1:K59QNx6EfpYlb//B/tOlMznqhR3Yz8uWsM5jlz9mduY=
+github.com/juju/tc v0.0.0-20251023013639-77c6a1d20e5a/go.mod h1:HQmYwCjODXvOaw7nVqSoX1S/g+OJitDnA5ZeJJkOhTo=
 github.com/kr/pretty v0.3.1 h1:flRD4NNwYAUpkphVc1HcthR4KEIFJ65n8Mw5qdRn3LE=
 github.com/kr/pretty v0.3.1/go.mod h1:hoEshYVHaxMs3cyo3Yncou5ZscifuDolrwPKZanG3xk=
 github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
